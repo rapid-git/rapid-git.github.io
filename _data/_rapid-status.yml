@@ -1,0 +1,33 @@
+staged-files:
+  - name: file_B.dat
+    type: M
+  - name: file_C.dat
+    type: A
+  - name: file_Q.dat
+    type: D
+  - name: file_R.dat -> file_S.dat
+    type: R
+  - name: file_X.dat
+    type: C
+unstaged-files:
+  - name: file_C.dat
+    type: M
+  - name: file_D.dat
+    type: D
+untracked-files:
+  - name: file_A.dat
+unmerged-files:
+  - name: file_G.dat
+    type: UU
+  - name: file_H.dat
+    type: AA
+  - name: file_I.dat
+    type: UA
+  - name: file_J.dat
+    type: AU
+  - name: file_K.dat
+    type: DD
+  - name: file_L.dat
+    type: UD
+  - name: file_M.dat
+    type: DU

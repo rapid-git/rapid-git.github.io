@@ -1,0 +1,5 @@
+unstaged-files:
+  - name: file_C.dat
+    type: M
+  - name: file_D.dat
+    type: D

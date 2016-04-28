@@ -1,0 +1,5 @@
+staged-files:
+  - name: file_C.dat
+    type: A
+  - name: file_R.dat -> file_S.dat
+    type: R
