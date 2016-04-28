@@ -1,0 +1,25 @@
+---
+layout: documentation
+title: Branching
+permalink: /branching
+---
+
+{% capture command_rapid-branch %}
+  {% include commands/command.html command = 'rapid branch' %}
+{% endcapture %}
+
+{% capture command_rapid-branch_output %}
+  {% include commands/output_rapid-branch.html
+    branches = site.data._rapid-branch.branches
+  %}
+{% endcapture %}
+
+{% capture command_empty %}
+  {% include commands/command.html command = '&#9611;' %}
+{% endcapture %}
+
+{% include console.html
+  command-1 = command_rapid-branch
+  command-2 = command_rapid-branch_output
+  command-3 = command_empty
+%}
