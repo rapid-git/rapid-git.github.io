@@ -1,0 +1,315 @@
+---
+layout: documentation
+title: Commiting
+permalink: /commiting
+---
+
+{% capture section_rapid-status %}
+  <p>
+    This command is used to display all staged, unstaged and untracked files as well as all unmerged files. In contrast to <code class="highlighter-rouge">git status</code> it places an index in front of each displayed file. These indexes can be used together with other commiting commands to work with the files.
+  </p>
+
+  {% include panel.html
+    type    = 'warning'
+    content = 'Does not display current state as merging, rebasing, reverting and so on'
+  %}
+  {% include panel.html
+    type    = 'info'
+    content = 'No committing command works with indexes of unmerged files yet'
+  %}
+
+  {% capture command_rapid-status %}
+    {% include commands/command.html command = 'rapid status' %}
+  {% endcapture %}
+
+  {% capture command_rapid-status_output %}
+    {% include commands/output_rapid-status.html
+      staged-files    = site.data._rapid-status.staged-files
+      unstaged-files  = site.data._rapid-status.unstaged-files
+      untracked-files = site.data._rapid-status.untracked-files
+      unmerged-files  = site.data._rapid-status.unmerged-files
+    %}
+  {% endcapture %}
+
+  {% capture command_empty %}
+    {% include commands/command.html command = '&#9611;' %}
+  {% endcapture %}
+
+  {% include console.html
+    command-1 = command_rapid-status
+    command-2 = command_rapid-status_output
+    command-3 = command_empty
+  %}
+{% endcapture %}
+
+{% capture section_rapid-track %}
+  {% include list.html
+    type   = 'square'
+    item-1 = 'Track one or multiple files by <a href="#fundamentals">index or range</a>'
+    item-2 = 'Equivalent to <code class="highlighter-rouge">git add</code>'
+    item-3 = 'Allows passing arbitrary options'
+    item-4 = 'Indexes are based on <b>untracked files</b> and folders of <code class="highlighter-rouge">rapid status</code>'
+  %}
+  {% capture command_rapid-track %}
+    {% include commands/command.html command = 'rapid track 2 3' %}
+  {% endcapture %}
+
+  {% capture command_rapid-track_output %}
+    {% include commands/output_committing-command.html
+      command         = 'track'
+      untracked-files = site.data._rapid-track.untracked-files
+    %}
+  {% endcapture %}
+
+  {% include console.html
+    command-1 = command_rapid-track
+    command-2 = command_rapid-track_output
+    command-3 = command_empty
+  %}
+{% endcapture %}
+
+{% capture section_rapid-stage %}
+  {% include list.html
+    type   = 'square'
+    item-1 = 'Stage one or multiple files by <a href="#fundamentals">index or range</a>'
+    item-2 = 'Equivalent to <code class="highlighter-rouge">git add</code>'
+    item-3 = 'Allows passing arbitrary options (e.g. <code class="highlighter-rouge">--patch</code>)'
+    item-4 = 'Indexes are based on <b>unstaged files</b> of <code class="highlighter-rouge">rapid status</code>'
+  %}
+  {% capture command_rapid-stage %}
+    {% include commands/command.html command = 'rapid stage ..' %}
+  {% endcapture %}
+
+  {% capture command_rapid-stage_output %}
+    {% include commands/output_committing-command.html
+      command        = 'stage'
+      unstaged-files = site.data._rapid-stage.unstaged-files
+    %}
+  {% endcapture %}
+
+  {% include console.html
+    command-1 = command_rapid-stage
+    command-2 = command_rapid-stage_output
+    command-3 = command_empty
+  %}
+{% endcapture %}
+
+{% capture section_rapid-unstage %}
+  {% include list.html
+    type   = 'square'
+    item-1 = 'Unstage one or multiple files by <a href="#fundamentals">index or range</a>'
+    item-2 = 'Equivalent to <code class="highlighter-rouge">git reset HEAD</code>'
+    item-3 = 'Allows passing arbitrary options (e.g. <code class="highlighter-rouge">--patch</code>)'
+    item-4 = 'Indexes are based on <b>staged files</b> of <code class="highlighter-rouge">rapid status</code>'
+  %}
+  {% capture command_rapid-unstage %}
+    {% include commands/command.html command = 'rapid unstage 2 3' %}
+  {% endcapture %}
+
+  {% capture command_rapid-unstage_output %}
+    {% include commands/output_committing-command.html
+      command      = 'unstage'
+      staged-files = site.data._rapid-unstage.staged-files
+    %}
+  {% endcapture %}
+
+  {% include console.html
+    command-1 = command_rapid-unstage
+    command-2 = command_rapid-unstage_output
+    command-3 = command_empty
+  %}
+{% endcapture %}
+
+{% capture section_rapid-drop %}
+  {% include list.html
+    type   = 'square'
+    item-1 = 'Drop unstaged changes of one or multiple files by <a href="#fundamentals">index or range</a>'
+    item-2 = 'Equivalent to <code class="highlighter-rouge">git checkout</code>'
+    item-3 = 'Allows passing arbitrary options'
+    item-4 = 'Indexes are based on <b>unstaged files</b> of <code class="highlighter-rouge">rapid status</code>'
+  %}
+  {% capture command_rapid-drop %}
+    {% include commands/command.html command = 'rapid drop ..' %}
+  {% endcapture %}
+
+  {% capture command_rapid-drop_output %}
+    {% include commands/output_committing-command.html
+      command        = 'drop'
+      unstaged-files = site.data._rapid-drop.unstaged-files
+    %}
+  {% endcapture %}
+
+  {% include console.html
+    command-1 = command_rapid-drop
+    command-2 = command_rapid-drop_output
+    command-3 = command_empty
+  %}
+{% endcapture %}
+
+{% capture section_rapid-remove %}
+  {% include list.html
+    type   = 'square'
+    item-1 = 'Remove one or multiple files by <a href="#fundamentals">index or range</a>'
+    item-2 = 'Equivalent to <code class="highlighter-rouge">rm -rf</code>'
+    item-3 = 'Indexes are based on <b>untracked files</b> and folders of <code class="highlighter-rouge">rapid status</code>'
+  %}
+
+  {% include panel.html
+    type    = 'warning'
+    content = 'When removing a directory, this command tries to remove sub-level files and directories too'
+  %}
+
+  {% capture command_rapid-remove %}
+    {% include commands/command.html command = 'rapid remove 2..' %}
+  {% endcapture %}
+
+  {% capture command_rapid-remove_output %}
+    {% include commands/output_committing-command.html
+      command         = 'remove'
+      untracked-files = site.data._rapid-remove.untracked-files
+    %}
+  {% endcapture %}
+
+  {% include console.html
+    command-1 = command_rapid-remove
+    command-2 = command_rapid-remove_output
+    command-3 = command_empty
+  %}
+{% endcapture %}
+
+{% capture section_rapid-diff %}
+  {% include list.html
+    type   = 'square'
+    item-1 = 'Show the diff of one or multiple files by <a href="#fundamentals">index or range</a>'
+    item-2 = 'Equivalent to <code class="highlighter-rouge">git diff</code>'
+    item-3 = 'Allows passing arbitrary options options (e.g. <code class="highlighter-rouge">--word-diff</code>)'
+    item-4 = 'Indexes are based on <b>unstaged files</b> of <code class="highlighter-rouge">rapid status</code> when using no additional option'
+    item-5 = 'Indexes are based on <b>staged files</b> of <code class="highlighter-rouge">rapid status</code> when using <code class="highlighter-rouge">--cached</code> or <code class="highlighter-rouge">--staged</code> as the first option'
+  %}
+  {% capture command_rapid-diff %}
+    {% include commands/command.html command = 'rapid diff ?' %}
+  {% endcapture %}
+
+
+  {% capture command_rapid-diff_output %}
+    <span class="bold yellow">diff --git a/file-name b/file-name</span>
+    <br />
+    <span class="bold yellow">index 1695e93..2572c02 100644</span>
+    <br />
+    <span class="bold yellow">--- a/file-name</span>
+    <br />
+    <span class="bold yellow">+++ b/file-name</span>
+    <br />
+    <span class="cyan">@@ -1,? +1,? @@</span>
+    <br />
+    <span> some important message:</span>
+    <br />
+    <span class="bold red">-(or not?)</span>
+    <br />
+    <span>     - something happened</span>
+    <br />
+    <span>     - also</span>
+    <br />
+    <span class="bold green">+    - nothing happened</span>
+    <br />
+    <br />
+  {% endcapture %}
+
+  {% include console.html
+    command-1 = command_rapid-diff
+    command-2 = command_rapid-diff_output
+    command-3 = command_empty
+  %}
+{% endcapture %}
+
+{% capture overview %}
+  {% include block-link.html
+    orientation = 'left'
+    href        = '#rapid-status'
+    text        = 'rapid status'
+  %}
+  {% include block-link.html
+    orientation = 'left'
+    href        = '#rapid-track'
+    text        = 'rapid track'
+  %}
+  {% include block-link.html
+    orientation = 'left'
+    href        = '#rapid-stage'
+    text        = 'rapid stage'
+  %}
+  {% include block-link.html
+    orientation = 'left'
+    href        = '#rapid-unstage'
+    text        = 'rapid unstage'
+  %}
+  {% include block-link.html
+    orientation = 'left'
+    href        = '#rapid-drop'
+    text        = 'rapid drop'
+  %}
+  {% include block-link.html
+    orientation = 'left'
+    href        = '#rapid-remove'
+    text        = 'rapid remove'
+  %}
+  {% include block-link.html
+    orientation = 'left'
+    href        = '#rapid-diff'
+    text        = 'rapid diff'
+  %}
+{% endcapture %}
+
+{% include box.html
+  type          = 'opening rhomboid'
+  content       = overview
+%}
+{% include box.html
+  type          = 'rhomboid'
+  headline-type = 'elegant'
+  headline-id   = 'rapid-status'
+  headline      = 'rapid status'
+  content       = section_rapid-status
+%}
+{% include box.html
+  type          = 'rhomboid'
+  headline-type = 'elegant'
+  headline-id   = 'rapid-track'
+  headline      = 'rapid track'
+  content       = section_rapid-track
+%}
+{% include box.html
+  type          = 'rhomboid'
+  headline-type = 'elegant'
+  headline-id   = 'rapid-stage'
+  headline      = 'rapid stage'
+  content       = section_rapid-stage
+%}
+{% include box.html
+  type          = 'rhomboid'
+  headline-type = 'elegant'
+  headline-id   = 'rapid-unstage'
+  headline      = 'rapid unstage'
+  content       = section_rapid-unstage
+%}
+{% include box.html
+  type          = 'rhomboid'
+  headline-type = 'elegant'
+  headline-id   = 'rapid-drop'
+  headline      = 'rapid drop'
+  content       = section_rapid-drop
+%}
+{% include box.html
+  type          = 'rhomboid'
+  headline-type = 'elegant'
+  headline-id   = 'rapid-remove'
+  headline      = 'rapid remove'
+  content       = section_rapid-remove
+%}
+{% include box.html
+  type          = 'closing rhomboid'
+  headline-type = 'elegant'
+  headline-id   = 'rapid-diff'
+  headline      = 'rapid diff'
+  content       = section_rapid-diff
+%}
