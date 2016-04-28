@@ -1,0 +1,58 @@
+{% case include.command %}
+  {% when 'track' %}
+    {% for file in include.untracked-files %}
+      {% assign symbol = '>' %}
+      <span class="yellow">        {{ symbol }}</span>
+      <span>{{ file.name }}</span>
+      <br />
+    {% endfor %}
+
+  {% when 'stage' %}
+    {% for file in include.unstaged-files %}
+      {% if file.type == 'M' or file.type == 'D' %}
+        <span class="yellow">        +</span>
+        <span>{{ file.name }}</span>
+        <br />
+      {% endif %}
+    {% endfor %}
+
+  {% when 'unstage' %}
+    {% for file in include.staged-files %}
+      {% case file.type %}
+        {% when 'A' %}
+          {% assign symbol = '<' %}
+          <span class="yellow">        {{ symbol }}</span>
+          <span>{{ file.name }}</span>
+          <br />
+        {% when 'M' or 'C' %}
+          <span class="yellow">        -</span>
+          <span>{{ file.name }}</span>
+          <br />
+        {% when 'R' %}
+          {% assign renamed-files = file.name | split: ' -> ' %}
+          {% for renamed-file in renamed-files %}
+            <span class="yellow">        -</span>
+            <span>{{ renamed-file }}</span>
+            <br />
+          {% endfor %}
+      {% endcase %}
+    {% endfor %}
+
+  {% when 'drop' %}
+    {% for file in include.unstaged-files %}
+      {% if file.type == 'M' or file.type == 'D' %}
+        <span class="cyan">        ~</span>
+        <span>{{ file.name }}</span>
+        <br />
+      {% endif %}
+    {% endfor %}
+
+  {% when 'remove' %}
+    {% for file in include.untracked-files %}
+      <span class="cyan">        -</span>
+      <span>{{ file.name }}</span>
+      <br />
+    {% endfor %}
+
+{% endcase %}
+<br />
