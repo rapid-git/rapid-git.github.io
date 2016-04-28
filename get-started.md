@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: documentation
 title: Get Started
 permalink: /get-started/
 ---
