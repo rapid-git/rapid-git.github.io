@@ -1,0 +1,21 @@
+<div class="console prompt">
+  <div class="header">
+    Command prompt
+  </div>
+
+  <pre>
+    <code>
+      {% if include.command-1 %}
+        {{ include.command-1 }}
+        {% for i in (2..1000) %}
+          {% assign param-name = 'command-' | append: i %}
+          {% if include[param-name] %}
+            {{ include[param-name] }}
+          {% else %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    </code>
+  </pre>
+</div>
