@@ -1,0 +1,162 @@
+{% if include.staged-files %}
+  <span>Index - staged files</span>
+  <br />
+  <br />
+  {% for file in include.staged-files %}
+    {% case file.type %}
+      {% when 'M' %}
+        {% assign type = '  modified:        ' %}
+      {% when 'A' %}
+        {% assign type = '  new file:        ' %}
+      {% when 'D' %}
+        {% assign type = '  deleted:         ' %}
+      {% when 'R' %}
+        {% assign type = '  renamed:         ' %}
+      {% when 'C' %}
+        {% assign type = '  copied:          ' %}
+      {% else %}
+        {% assign type = false %}
+    {% endcase %}
+
+    {% if file.name and type %}
+      {% if forloop.index < 10 %}
+        {% assign indentation = '  ' %}
+      {% elsif forloop.index < 100 %}
+        {% assign indentation = ' ' %}
+      {% else %}
+        {% assign indentation = '' %}
+      {% endif %}
+      {% assign index = '(' | prepend: indentation | append: forloop.index | append: ')' %}
+
+      <span class="bold red">{{ type }}</span>
+      <span class="bold yellow">{{ index }}</span>
+      <span class="bold red">{{ file.name }}</span>
+    {% else %}
+      {% include commands/output_rapid-status_error.html
+        file-name = file.name
+        type = type
+        allowed-types = 'staged'
+      %}
+    {% endif %}
+    <br />
+  {% endfor %}
+  <br />
+{% endif %}
+
+{% if include.unstaged-files %}
+  <span class="">Work tree - unstaged files</span>
+  <br />
+  <br />
+  {% for file in include.unstaged-files %}
+    {% case file.type %}
+      {% when 'M' %}
+        {% assign type = '  modified:        ' %}
+      {% when 'D' %}
+        {% assign type = '  deleted:         ' %}
+      {% else %}
+        {% assign type = false %}
+    {% endcase %}
+
+    {% if file.name and type %}
+      {% if forloop.index < 10 %}
+        {% assign indentation = '  ' %}
+      {% elsif forloop.index < 100 %}
+        {% assign indentation = ' ' %}
+      {% else %}
+        {% assign indentation = '' %}
+      {% endif %}
+      {% assign index = '(' | prepend: indentation | append: forloop.index | append: ')' %}
+
+      <span class="bold green">{{ type }}</span>
+      <span class="bold yellow">{{ index }}</span>
+      <span class="bold green">{{ file.name }}</span>
+    {% else %}
+      {% include commands/output_rapid-status_error.html
+        file-name = file.name
+        type = type
+        allowed-types = 'unstaged'
+      %}
+    {% endif %}
+    <br />
+  {% endfor %}
+  <br />
+{% endif %}
+
+{% if include.untracked-files %}
+  <span class="">Untracked files</span>
+  <br />
+  <br />
+  {% for file in include.untracked-files %}
+    {% if file.name %}
+      {% if forloop.index < 10 %}
+        {% assign indentation = '  ' %}
+      {% elsif forloop.index < 100 %}
+        {% assign indentation = ' ' %}
+      {% else %}
+        {% assign indentation = '' %}
+      {% endif %}
+      {% assign index = '(' | prepend: indentation | append: forloop.index | append: ')' %}
+
+      <span class="bold cyan">  untracked file:  </span>
+      <span class="bold yellow">{{ index }}</span>
+      <span class="bold cyan">{{ file.name }}</span>
+    {% else %}
+      {% include commands/output_rapid-status_error.html
+        file-name = file.name
+        type = type
+        watch-type = false
+      %}
+    {% endif %}
+    <br />
+  {% endfor %}
+  <br />
+{% endif %}
+
+{% if include.unmerged-files %}
+  <span>Unmerged files</span>
+  <br />
+  <br />
+  {% for file in include.unmerged-files %}
+    {% case file.type %}
+      {% when 'UU' %}
+        {% assign type = '  both modified:   ' %}
+      {% when 'AA' %}
+        {% assign type = '  both added:      ' %}
+      {% when 'UA' %}
+        {% assign type = '  added by them:   ' %}
+      {% when 'AU' %}
+        {% assign type = '  added by us:     ' %}
+      {% when 'DD' %}
+        {% assign type = '  both deleted:    ' %}
+      {% when 'UD' %}
+        {% assign type = '  deleted by them: ' %}
+      {% when 'DU' %}
+        {% assign type = '  deleted by us:   ' %}
+      {% else %}
+        {% assign type = false %}
+    {% endcase %}
+
+    {% if file.name and type %}
+      {% if forloop.index < 10 %}
+        {% assign indentation = '  ' %}
+      {% elsif forloop.index < 100 %}
+        {% assign indentation = ' ' %}
+      {% else %}
+        {% assign indentation = '' %}
+      {% endif %}
+      {% assign index = '(' | prepend: indentation | append: forloop.index | append: ')' %}
+
+      <span class="bold magenta">{{ type }}</span>
+      <span class="bold yellow">{{ index }}</span>
+      <span class="bold magenta">{{ file.name }}</span>
+    {% else %}
+      {% include commands/output_rapid-status_error.html
+        file-name = file.name
+        type = type
+        allowed-types = 'unmerged'
+      %}
+    {% endif %}
+    <br />
+  {% endfor %}
+  <br />
+{% endif %}

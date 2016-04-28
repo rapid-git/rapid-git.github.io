@@ -1,0 +1,67 @@
+<span class="bold red">  X  </span>
+<span>Invalid object in data file</span>
+
+{% unless include.file-name %}
+  <br />
+  <span>      - File name missing. Please add the property</span>
+  <br />
+  <span class="bold yellow">        name</span>
+  <span>with a string as value to the object.</span>
+{% endunless %}
+
+{% assign watch-type = include.watch-type | default: true %}
+{% if watch-type %}
+  {% unless include.type %}
+    <br />
+    <span>      - No valid file change type detected. Please</span>
+    <br />
+    <span>        add the property <span class="bold yellow">type</span> with a valid value.</span>
+    <br />
+    <span>        Use:</span>
+    <br />
+    {% case include.allowed-types %}
+      {% when 'staged' %}
+        <span class="bold yellow">            M </span>
+        <span>for modified</span>
+        <br />
+        <span class="bold yellow">            A </span>
+        <span>for new file</span>
+        <br />
+        <span class="bold yellow">            D </span>
+        <span>for deleted</span>
+        <br />
+        <span class="bold yellow">            R </span>
+        <span>for renamed</span>
+        <br />
+        <span class="bold yellow">            C </span>
+        <span>for copied</span>
+      {% when 'unstaged' %}
+        <span class="bold yellow">            M </span>
+        <span>for modified</span>
+        <br />
+        <span class="bold yellow">            D </span>
+        <span>for deleted</span>
+      {% when 'unmerged' %}
+        <span class="bold yellow">            UU </span>
+        <span>for both modified</span>
+        <br />
+        <span class="bold yellow">            AA </span>
+        <span>for both added</span>
+        <br />
+        <span class="bold yellow">            UA </span>
+        <span>for added by them</span>
+        <br />
+        <span class="bold yellow">            AU </span>
+        <span>for added by us</span>
+        <br />
+        <span class="bold yellow">            DD </span>
+        <span>for both deleted</span>
+        <br />
+        <span class="bold yellow">            UD </span>
+        <span>for deleted by them</span>
+        <br />
+        <span class="bold yellow">            DU </span>
+        <span>for deleted by us</span>
+    {% endcase %}
+  {% endunless %}
+{% endif %}
