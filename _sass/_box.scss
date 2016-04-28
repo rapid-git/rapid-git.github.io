@@ -53,3 +53,26 @@
     }
   }
 }
+
+.box > .content {
+
+  > .panel {
+
+    $panel-info-color: rgb(60,126,182);
+    $panel-warning-color: rgb(208, 187, 48);
+
+    &.info,
+    &.warning {
+      box-shadow: none;
+      border: 1px solid;
+    }
+
+    &.info {
+      border-color: rgba($panel-info-color,.24);
+    }
+
+    &.warning {
+      border-color: rgba($panel-warning-color,.24);
+    }
+  }
+}
