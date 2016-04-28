@@ -1,0 +1,143 @@
+{% assign type = include.type | default: 'rhomboid' | append: ' ' %}
+{% assign headline-type = include.headline-type | default: 'elegant' | append: ' ' %}
+
+{% if include.headline-id %}
+  {% assign headline-id = include.headline-id | prepend: 'id="' | append: '" ' %}
+{% endif %}
+
+<div class="{{ type }}box">
+  <svg
+    preserveAspectRatio="none"
+    class="background" >
+
+    <defs id="defs4">
+      <filter id="dropshadow">
+        <feFlood
+          flood-opacity="1"
+          flood-color="rgb(229,229,229)"
+          result="flood1" />
+        <feComposite
+          in="flood1"
+          in2="SourceGraphic"
+          operator="in"
+          result="composite1" />
+        <feOffset
+          in="composite1"
+          dx="0"
+          dy="-1"
+          result="blur1" />
+        <feFlood
+          flood-opacity="0.12"
+          flood-color="rgb(0,0,0)"
+          result="flood2" />
+        <feComposite
+          in="flood2"
+          in2="SourceGraphic"
+          operator="in"
+          result="composite2" />
+        <feOffset
+          in="composite2"
+          dx="0"
+          dy="0"
+          result="composite2" />
+        <feGaussianBlur
+          in="composite2"
+          stdDeviation="1"
+          result="blur2" />
+        <feFlood
+          flood-opacity="0.24"
+          flood-color="rgb(0,0,0)"
+          result="flood3" />
+        <feComposite
+          in="flood3"
+          in2="SourceGraphic"
+          operator="in"
+          result="composite3" />
+        <feOffset
+          in="composite3"
+          dx="0"
+          dy="2"
+          result="composite3" />
+        <feGaussianBlur
+          in="composite3"
+          stdDeviation="2"
+          result="blur3" />
+        <feMerge>
+    			<feMergeNode in="blur1" />
+    			<feMergeNode in="blur2" />
+    			<feMergeNode in="blur3" />
+    			<feMergeNode in="SourceGraphic"/>
+    		</feMerge>
+      </filter>
+    </defs>
+
+    {% if type == 'rhomboid ' or type == 'closing rhomboid ' %}
+      <svg
+        viewBox="0 0 500 70"
+        y="-70"
+        height="70"
+        width="100%"
+        preserveAspectRatio="none" >
+        <path
+          style="fill:#ffffff;"
+          d="M 500,0 L 0,70 L 500,70 Z" />
+      </svg>
+    {% endif %}
+
+    <svg
+      viewBox="0 0 500 500"
+      width="100%"
+      preserveAspectRatio="none" >
+      <path
+        style="fill:#ffffff;"
+        d="M 500,0 L 0,0 L 0,500 L 500,500 Z" />
+    </svg>
+
+    {% if type == 'rhomboid ' or type == 'opening rhomboid ' %}
+      <svg
+        viewBox="0 0 500 70"
+        y="100%"
+        height="70"
+        width="100%"
+        preserveAspectRatio="none" >
+        <path
+          style="fill:#ffffff;"
+          d="M 500,0 L 0,0 L 0,70 Z" />
+      </svg>
+    {% endif %}
+
+    {% if include.headline %}
+      {% unless type contains 'opening' %}
+        <svg
+          viewBox="0 0 500 140"
+          y="-70"
+          height="140"
+          preserveAspectRatio="none"
+          class="{{ headline-type }}" >
+          <path
+            d="M 500,0 L 0,70 L 0,140 L 500,140 Z" />
+        </svg>
+      {% else %}
+      <svg
+        viewBox="0 0 500 70"
+        y="0"
+        height="70"
+        preserveAspectRatio="none"
+        class="{{ headline-type }}" >
+        <path
+          d="M 500,0 L 0,0 L 0,70 L 500,70 Z" />
+      </svg>
+      {% endunless %}
+    {% endif %}
+  </svg>
+
+  {% if include.headline %}
+    <h2 {{ headline-id }}class="{{ headline-type }}headline">
+      {{ include.headline }}
+    </h2>
+  {% endif %}
+
+  <div class="content">
+    {{ include.content }}
+  </div>
+</div>
