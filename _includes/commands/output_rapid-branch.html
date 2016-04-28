@@ -1,0 +1,66 @@
+{% if include.branches %}
+  {% assign marker-count = 0 %}
+
+  {% for branch in include.branches %}
+    {% if branch.name %}
+      {% if branch.current and branch.current == true %}
+        {% assign marker-count = marker-count | plus: 1 %}
+        {% assign bold-class = 'bold ' %}
+        {% assign marker = '>' %}
+      {% else %}
+        {% assign bold-class = '' %}
+        {% assign marker = ' ' %}
+      {% endif %}
+
+      {% if forloop.index < 10 %}
+        {% assign indentation = '  ' %}
+      {% elsif forloop.index < 100 %}
+        {% assign indentation = ' ' %}
+      {% else %}
+        {% assign indentation = '' %}
+      {% endif %}
+      {% assign index = '(' | prepend: indentation | append: forloop.index | append: ')' %}
+
+      <span class="{{ bold-class }}cyan">{{ marker }}</span>
+      <span class="{{ bold-class }}yellow">{{ index }}</span>
+      <span class="{{ bold-class }}cyan">{{ branch.name }}</span>
+    {% else %}
+      <span class="bold red">     X </span>
+      <span>Invalid object in data file</span>
+      <br />
+
+      <span>        - File name missing. Please add the property</span>
+      <br />
+      <span class="bold yellow">          name</span>
+      <span>with a string as value to the object.</span>
+    {% endif %}
+    <br />
+  {% endfor %}
+
+  {% if marker-count == 0 %}
+    <span class="bold red">     X </span>
+    <span>Invalid object in data file</span>
+    <br />
+
+    <span>        - Current branch is not marked. Please add</span>
+    <br />
+    <span>          the property</span>
+    <span class="bold yellow">current</span>
+    <span>with value</span>
+    <span class="bold yellow">true</span>
+    <br />
+    <span>          to the appropriate object.</span>
+    <br />
+  {% elsif marker-count > 1 %}
+    <span class="bold red">     X </span>
+    <span>Invalid object in data file</span>
+    <br />
+    <span>        - You marked {{ marker-count }} branches as current branch. </span>
+    <br />
+    <span>          Please unmark some as you can only have</span>
+    <br />
+    <span>          one marked.</span>
+    <br />
+  {% endif %}
+  <br />
+{% endif %}
