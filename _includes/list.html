@@ -1,0 +1,17 @@
+{% if include.item-1 %}
+  <ul class="{{ include.type }}">
+    <li>
+      {{ include.item-1 }}
+    </li>
+    {% for i in (2..1000) %}
+      {% assign param-name = 'item-' | append: i %}
+      {% if include[param-name] %}
+        <li>
+          {{ include[param-name] }}
+        </li>
+      {% else %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+  </ul>
+{% endif %}
