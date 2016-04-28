@@ -1,0 +1,8 @@
+branches:
+  - name: bug-fix/ie8-horror
+  - name: development
+  - name: feature/video-player
+  - name: feature/music-player
+  - name: master
+    current: true
+  - name: prototype/video-player
