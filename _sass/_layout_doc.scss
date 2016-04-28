@@ -1,0 +1,67 @@
+::-moz-selection { background: $middle-color; color: #fff; text-shadow: none; }
+::selection { background: $middle-color; color: #fff; text-shadow: none; }
+:focus { outline: 2px dotted $middle-color; }
+
+.page-content {
+  padding: 3 * $spacing-unit 0 $spacing-unit;
+}
+
+.documentation {
+  padding: 0 $spacing-unit * 2;
+}
+
+.documentation-header {
+  margin-bottom: $spacing-unit;
+
+  .inset-text {
+    font-size: 72px;
+    font-weight: bolder;
+    color: rgba(245,245,245, 0.8);
+    text-shadow: 1px 2px 4px $background-color,
+                 0 0 0 #000;
+  }
+}
+
+.documentation-title {
+  font-size: 42px;
+  letter-spacing: -1px;
+  line-height: 1;
+
+  @include media-query($on-laptop) {
+    font-size: 36px;
+  }
+}
+
+.documentation-content {
+  margin-bottom: $spacing-unit;
+
+  h2 {
+    font-size: 32px;
+
+    @include media-query($on-laptop) {
+      font-size: 28px;
+    }
+  }
+
+  h3 {
+    font-size: 26px;
+
+    @include media-query($on-laptop) {
+      font-size: 22px;
+    }
+  }
+
+  h4 {
+    font-size: 20px;
+
+    @include media-query($on-laptop) {
+      font-size: 18px;
+    }
+  }
+}
+
+@media (min-width: 1000px) {
+  .page-content {
+    padding: $spacing-unit 0 $spacing-unit 260px;
+  }
+}
