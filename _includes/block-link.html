@@ -1,0 +1,32 @@
+{% assign orientation = include.orientation | default: 'left' %}
+{% if include.active == 'true' %}
+  {% assign active = 'active ' %}
+{% else %}
+  {% assign active = '' %}
+{% endif %}
+<div class="{{ active }}block-link orientation-{{ orientation }}">
+  <svg
+    viewBox="0 0 500 50"
+    preserveAspectRatio="none"
+    class="background" >
+
+    {% if orientation == 'left' %}
+      <path
+        class="underline"
+        d="M 50,0 L 100,50 L 500,50 L 500,49 L 100,49 L 51,0 Z" />
+      <path
+        class="fill"
+        d="M 500,50 L 100,50 L 50,0 L 70,0 L 117,46 L 500,46 Z" />
+    {% endif %}
+
+    {% if orientation == 'right' %}
+      <path
+        class="underline"
+        d="M 450,0 L 400,50 L 0,50 L 0,49 L 400,49 L 449,0 Z" />
+      <path
+        class="fill"
+        d="M 0,50 L 400,50 L 450,0 L 430,0 L 383,46 L 0,46 Z" />
+    {% endif %}
+  </svg>
+  <a href="{{ include.href }}">{{ include.text }}</a>
+</div>

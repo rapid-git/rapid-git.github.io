@@ -4,6 +4,14 @@
 @charset "utf-8";
 
 
+// My colors
+$left-color-2:    #C2620B;
+$left-color-1:    #8F6E50;
+$middle-color:    #F54D27;
+$right-color-1:   #65F699;
+$right-color-2:   #0BC219;
+$grey:            #F5F5F5;
+
 
 // Our variables
 $base-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -49,5 +57,6 @@ $on-laptop:        800px;
 @import
         "base",
         "layout",
+        "block-link",
         "syntax-highlighting"
 ;
