@@ -1,0 +1,136 @@
+<svg width="0" height="0">
+  <defs>
+    <filter id="drop-shadow">
+      <feFlood
+        flood-opacity="1"
+        flood-color="rgb(229,229,229)"
+        result="flood1" />
+      <feComposite
+        in="flood1"
+        in2="SourceGraphic"
+        operator="in"
+        result="composite1" />
+      <feOffset
+        in="composite1"
+        dx="0"
+        dy="-1"
+        result="blur1" />
+      <feFlood
+        flood-opacity="0.12"
+        flood-color="rgb(0,0,0)"
+        result="flood2" />
+      <feComposite
+        in="flood2"
+        in2="SourceGraphic"
+        operator="in"
+        result="composite2" />
+      <feOffset
+        in="composite2"
+        dx="0"
+        dy="0"
+        result="composite2" />
+      <feGaussianBlur
+        in="composite2"
+        stdDeviation="1"
+        result="blur2" />
+      <feFlood
+        flood-opacity="0.24"
+        flood-color="rgb(0,0,0)"
+        result="flood3" />
+      <feComposite
+        in="flood3"
+        in2="SourceGraphic"
+        operator="in"
+        result="composite3" />
+      <feOffset
+        in="composite3"
+        dx="0"
+        dy="2"
+        result="composite3" />
+      <feGaussianBlur
+        in="composite3"
+        stdDeviation="2"
+        result="blur3" />
+      <feMerge>
+        <feMergeNode in="blur1" />
+        <feMergeNode in="blur2" />
+        <feMergeNode in="blur3" />
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id='inset-shadow'>
+      <!-- Shadow Offsets -->
+      <feOffset
+        dx='0'
+        dy='0'
+        result="offset-1"
+      />
+      <feOffset
+        dx='-2'
+        dy='0'
+        result="offset-2"
+      />
+      <!-- Shadow Blurs -->
+      <feGaussianBlur
+        in="offset-1"
+        stdDeviation='1'
+        result='offset-blur-1'
+      />
+      <feGaussianBlur
+        in="offset-2"
+        stdDeviation='2'
+        result='offset-blur-2'
+      />
+      <!-- Invert the drop shadows
+           to create inner shadows -->
+      <feComposite
+        operator='out'
+        in='SourceGraphic'
+        in2='offset-blur-1'
+        result='inset-1'
+      />
+      <feComposite
+        operator='out'
+        in='SourceGraphic'
+        in2='offset-blur-2'
+        result='inset-2'
+      />
+      <!-- Colors & Opacities -->
+      <feFlood
+        flood-color='black'
+        flood-opacity='0.12'
+        result='flood-1'
+      />
+      <feFlood
+        flood-color='black'
+        flood-opacity='0.24'
+        result='flood-2'
+      />
+      <!-- Clip colors inside shadows -->
+      <feComposite
+        operator='in'
+        in='flood-1'
+        in2='inset-1'
+        result='inset-shadow-1'
+      />
+      <feComposite
+        operator='in'
+        in='flood-2'
+        in2='inset-2'
+        result='inset-shadow-2'
+      />
+      <!-- Merge inset shadows -->
+      <feMerge result="inset-shadow">
+        <feMergeNode in="inset-shadow-1" mode="normal"/>
+        <feMergeNode in="inset-shadow-2" mode="normal"/>
+      </feMerge>
+      <!-- Put resulting shadow over original object -->
+      <feComposite
+        operator='over'
+        in='inset-shadow'
+        in2='SourceGraphic'
+      />
+    </filter>
+  </defs>
+</svg>
