@@ -1,33 +1,19 @@
 ::-moz-selection { background: $middle-color; color: #fff; text-shadow: none; }
 ::selection { background: $middle-color; color: #fff; text-shadow: none; }
 
-.page-content {
-  padding: 3 * $spacing-unit 0 $spacing-unit;
-}
-
-.documentation {
-  padding: 0 $spacing-unit * 2;
-}
-
 .documentation-header {
   margin-bottom: $spacing-unit;
 
+  .documentation-title {
+    letter-spacing: -1px;
+    line-height: 1;
+  }
+
   .inset-text {
-    font-size: 72px;
     font-weight: bolder;
     color: rgba(245,245,245, 0.8);
     text-shadow: 1px 2px 4px $background-color,
-                 0 0 0 #000;
-  }
-}
-
-.documentation-title {
-  font-size: 42px;
-  letter-spacing: -1px;
-  line-height: 1;
-
-  @include media-query($on-laptop) {
-    font-size: 36px;
+                 0 0 0 black;
   }
 }
 
@@ -59,8 +45,30 @@
   }
 }
 
+@media only screen and (max-width: 999px) {
+  .documentation-page > .page-content {
+    padding: 5 * $spacing-unit 0 $spacing-unit;
+  }
+
+  .documentation {
+    padding: 0 $spacing-unit / 1.5;
+  }
+
+  .documentation-header > .documentation-title {
+    font-size: 56px;
+  }
+}
+
 @media (min-width: 1000px) {
-  .page-content {
+  .documentation-page > .page-content {
     padding: $spacing-unit 0 $spacing-unit 260px;
+  }
+
+  .documentation {
+    padding: 0 $spacing-unit * 2;
+  }
+
+  .documentation-header > .documentation-title {
+    font-size: 72px;
   }
 }
