@@ -4,86 +4,99 @@ title: Fundamentals
 permalink: /fundamentals
 ---
 
-<p id="fundamentals">
-  Working with <b>rapid-git</b> means working with indexes. In the following paragraphs and pages we will often use this very word. It may makes you wonder: What are these indexes? Well, indexes always refer to the position of a file, directory or branch in the output of <code class="highlighter-rouge">git status</code> and <code class="highlighter-rouge">git branch</code>. They start at <b>1</b>, not at <b>0</b> and can form ranges. These so called ranges can be defined using numbers and dots notation.
-</p>
-<p>
-  There are the following notations available:
-</p>
+{% capture section_introduction %}
+  <p id="fundamentals">
+    Working with <b>rapid-git</b> means working with indexes. In the following paragraphs and pages we will often use this very word. It may makes you wonder: What are these indexes? Well, indexes always refer to the position of a file, directory or branch in the output of <code class="highlighter-rouge">git status</code> and <code class="highlighter-rouge">git branch</code>. They start at <b>1</b>, not at <b>0</b> and can form ranges. These so called ranges can be defined using numbers and dots notation.
+  </p>
 
-<div class="grid">
-  <div class="four cell">
-    <b>Notation</b>
+  <h3>Available notations</h3>
+  <div class="flex-row">
+    <div class="flex-cell grow-2 xs-grow-3 sm-grow-1">
+      <b>Notation</b>
+    </div>
+    <div class="flex-cell grow-3 xs-grow-2 sm-grow-1">
+      <b>Description</b>
+    </div>
   </div>
-  <div class="six cell">
-    <b>Description</b>
+  <div class="flex-row">
+    <div class="flex-cell grow-2 xs-grow-3 sm-grow-1">
+      <code>#</code>
+    </div>
+    <div class="flex-cell grow-3 xs-grow-2 sm-grow-1">
+      select a single list entry
+    </div>
   </div>
+  <div class="flex-row">
+    <div class="flex-cell grow-2 xs-grow-3 sm-grow-1">
+      <code>..</code>
+    </div>
+    <div class="flex-cell grow-3 xs-grow-2 sm-grow-1">
+      select all list entries
+    </div>
+  </div>
+  <div class="flex-row">
+    <div class="flex-cell grow-2 xs-grow-3 sm-grow-1">
+      <code>..#</code>
+      <span class="white-space">  </span>
+      e.g.
+      <span class="white-space"> </span>
+      <code>..5</code>
+    </div>
+    <div class="flex-cell grow-3 xs-grow-2 sm-grow-1">
+      select the first entry up to the fifth one
+    </div>
+  </div>
+  <div class="flex-row">
+    <div class="flex-cell grow-2 xs-grow-3 sm-grow-1">
+      <code>#..</code>
+      <span class="white-space">  </span>
+      e.g.
+      <span class="white-space"> </span>
+      <code>3..</code>
+    </div>
+    <div class="flex-cell grow-3 xs-grow-2 sm-grow-1">
+      select the third entry up to the last one
+    </div>
+  </div>
+  <div class="flex-row">
+    <div class="flex-cell grow-2 xs-grow-3 sm-grow-1">
+      <code>#..#</code>
+      <span class="white-space"> </span>
+      e.g.
+      <span class="white-space"> </span>
+      <code>4..7</code>
+    </div>
+    <div class="flex-cell grow-3 xs-grow-2 sm-grow-1">
+      select the fourth entry up to the seventh entry
+    </div>
+  </div>
+{% endcapture %}
 
-  <div class="four cell">
-    <code class="highlighter-rouge">#</code>
-  </div>
-  <div class="six cell">
-    select a single list entry
-  </div>
+{% capture section_support %}
+  {% capture support_info_list_template %}
+    {% include list.html
+      type   = 'square'
+      item-1 = 'Committing commands support simple indexes as well as ranges'
+      item-2 = 'Committing commands allow multiple arguments to be passed'
+      item-3 = 'Branching commands mostly support a single index'
+    %}
+  {% endcapture %}
 
-  <div class="four cell">
-    <code class="highlighter-rouge">..</code>
-  </div>
-  <div class="six cell">
-    select all list entries
-  </div>
-
-  <div class="one cell">
-    <code class="highlighter-rouge">..#</code>
-  </div>
-  <div class="one cell">
-    e.g.
-  </div>
-  <div class="two cell">
-    <code class="highlighter-rouge">..5</code>
-  </div>
-  <div class="six cell">
-    select the first entry up to the fifth one
-  </div>
-
-  <div class="one cell">
-    <code class="highlighter-rouge">#..</code>
-  </div>
-  <div class="one cell">
-    e.g.
-  </div>
-  <div class="two cell">
-    <code class="highlighter-rouge">3..</code>
-  </div>
-  <div class="six cell">
-    select the third entry up to the last one
-  </div>
-
-  <div class="one cell">
-    <code class="highlighter-rouge">#..#</code>
-  </div>
-  <div class="one cell">
-    e.g.
-  </div>
-  <div class="two cell">
-    <code class="highlighter-rouge">4..7</code>
-  </div>
-  <div class="six cell">
-    select the fourth entry up to the seventh entry
-  </div>
-</div>
-
-{% capture support_info_list_template %}
-  {% include list.html
-    type   = 'square'
-    item-1 = 'Committing commands support simple indexes as well as ranges'
-    item-2 = 'Committing commands allow multiple arguments to be passed'
-    item-3 = 'Branching commands only support a single index'
+  {% include panel.html
+    type    = 'info'
+    title   = 'Support information'
+    content = support_info_list_template
   %}
 {% endcapture %}
 
-{% include panel.html
-  type    = 'info'
-  title   = 'Support information'
-  content = support_info_list_template
+{% include box.html
+  type            = 'opening rhomboid'
+  headline-type   = 'elegant'
+  headline-id     = 'indexes-and-ranges'
+  headline        = 'Indexes and ranges'
+  content         = section_introduction
+%}
+{% include box.html
+  type            = 'closing rhomboid'
+  content         = section_support
 %}
