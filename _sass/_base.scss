@@ -40,6 +40,17 @@ ul, ol, dl, figure,
 
 
 /**
+ * Set box-sizing to `border-box` for most elements
+ */
+div, section, article, header, footer,
+h1, h2, h3, h4, h5, h6, p,
+ul, ol, li, dl, dt, dd, figure,
+a, button, input, label, form, img {
+  box-sizing: border-box;
+}
+
+
+/**
  * Images
  */
 img {
@@ -91,16 +102,20 @@ h1, h2, h3, h4, h5, h6 {
  * Links
  */
 a {
-    color: $brand-color;
+    color: $middle-color;
     text-decoration: none;
 
     &:visited {
-        color: darken($brand-color, 15%);
+        color: darken($middle-color, 15%);
     }
 
     &:hover {
         color: $text-color;
         text-decoration: underline;
+    }
+
+    &:not([href]):hover {
+      text-decoration: line-through;
     }
 }
 
