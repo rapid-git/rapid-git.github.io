@@ -59,26 +59,6 @@
         text-align: right;
       }
     }
-
-    > table {
-      border-spacing: 0;
-      width: 100%;
-
-      > tr > td,
-      > tbody > tr > td {
-        vertical-align: top;
-        padding: 6px 10px;
-        width: 50%;
-
-        &:first-child {
-          padding-left: 0;
-        }
-
-        &:last-child {
-          padding-right: 0;
-        }
-      }
-    }
   }
 
   > .footer {
