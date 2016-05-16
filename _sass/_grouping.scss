@@ -1,0 +1,105 @@
+.grouping {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  width: 100%;
+
+  > .header {
+    display: flex;
+    flex-flow: row;
+    width: 100%;
+
+    > .label {
+      flex: 0 0 auto;
+      overflow: hidden;
+      border-bottom: 1px solid $left-color-1;
+      padding: 11px 20px 11px;
+      min-width: calc(50% - 25px);
+      max-width: calc(100% - 100px);
+      color: $left-color-1;
+      font-size: 18px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    > .top-right-border {
+      flex: 1 1 auto;
+      border-top: 1px solid $left-color-1;
+      border-right: 1px solid $left-color-1;
+      min-width: 50px;
+    }
+  }
+
+  > .content {
+    border-right: 1px solid $left-color-1;
+    border-left: 1px solid $left-color-1;
+    padding: 22px 20px 0;
+    width: 100%;
+
+    > .double-header {
+      position: relative;
+      display: flex;
+      flex-flow: row;
+      margin-left: 10%;
+      margin-bottom: 50px;
+      border-bottom: 1px dashed $left-color-1;
+      width: calc(90% + 20px);
+
+      > .left,
+      > .right {
+        flex: 1 1 auto;
+        color: #b1afaf;
+      }
+
+      > .left {
+        padding: 11px 10px 11px 20px;
+      }
+
+      > .right {
+        padding: 11px 20px 11px 10px;
+        text-align: right;
+      }
+    }
+
+    > table {
+      border-spacing: 0;
+      width: 100%;
+
+      > tr > td,
+      > tbody > tr > td {
+        vertical-align: top;
+        padding: 6px 10px;
+        width: 50%;
+
+        &:first-child {
+          padding-left: 0;
+        }
+
+        &:last-child {
+          padding-right: 0;
+        }
+      }
+    }
+  }
+
+  > .footer {
+    display: flex;
+    flex-flow: row;
+    width: 100%;
+
+    > .bottom-left-border {
+      flex: 1 1 auto;
+      border-bottom: 1px solid $left-color-1;
+      border-left: 1px solid $left-color-1;
+    }
+  }
+
+  > .header > .diagonally-border,
+  > .footer > .diagonally-border {
+    flex: 0 0 50px;
+    fill: transparent;
+    stroke: $left-color-1;
+    stroke-width: 1px;
+    stroke-linecap: square;
+    stroke-linejoin: miter;
+  }
+}
