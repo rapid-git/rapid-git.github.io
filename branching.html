@@ -4,22 +4,409 @@ title: Branching
 permalink: /branching
 ---
 
-{% capture command_rapid-branch %}
-  {% include commands/command.html command = 'rapid branch' %}
-{% endcapture %}
-
-{% capture command_rapid-branch_output %}
-  {% include commands/output_rapid-branch.html
-    branches = site.data._rapid-branch.branches
+{% capture overview %}
+  {% include block-link.html
+    orientation = 'left'
+    href        = '#rapid-branch'
+    text        = 'rapid branch'
+  %}
+  {% include block-link.html
+    orientation = 'left'
+    href        = '#rapid-checkout'
+    text        = 'rapid checkout'
+  %}
+  {% include block-link.html
+    orientation = 'left'
+    href        = '#rapid-merge'
+    text        = 'rapid merge'
+  %}
+  {% include block-link.html
+    orientation = 'left'
+    href        = '#rapid-rebase'
+    text        = 'rapid rebase'
+  %}
+  {% include block-link.html
+    orientation = 'left'
+    href        = '#rapid-push'
+    text        = 'rapid push'
   %}
 {% endcapture %}
 
-{% capture command_empty %}
-  {% include commands/command.html command = '&#9611;' %}
+{% capture section_rapid-branch %}
+  <p>
+    By using <code class="highlighter-rouge">rapid branch</code>, you can display all local or remote branches prefixed with an index. Given this feature this command will be your reference, whenever you work with any other branching command like <code class="highlighter-rouge">rapid checkout</code> or <code class="highlighter-rouge">rapid rebase</code>. Furthermore you can also use it to delete or even force delete any existing branch by using a representative index as reference.
+  </p>
+
+  <h3>Available notations</h3>
+
+  <div class="flex-row">
+    <div class="flex-cell">
+      <code>rapid branch</code>
+    </div>
+    <div class="flex-cell">
+      display all local branches
+    </div>
+  </div>
+  <div class="flex-row">
+    <div class="flex-cell">
+      <code>rapid branch -r</code>
+    </div>
+    <div class="flex-cell">
+      display all remote branches
+    </div>
+  </div>
+  <div class="flex-row">
+    <div class="flex-cell">
+      <code>rapid branch -a</code>
+    </div>
+    <div class="flex-cell">
+      display all local and remote branches
+    </div>
+  </div>
+  <div class="flex-row">
+    <div class="flex-cell">
+      <code>rapid branch -d &#60;index&#62;</code>
+    </div>
+    <div class="flex-cell">
+      delete a branch
+    </div>
+  </div>
+  <div class="flex-row">
+    <div class="flex-cell">
+      <code>rapid branch -D &#60;index&#62;</code>
+    </div>
+    <div class="flex-cell">
+      force delete a branch
+    </div>
+  </div>
+
+  {% capture branch_experimental %}
+    {% include double-header.html
+      left-label      = 'branch'
+      left-href       = 'https://github.com/rapid-git/rapid-git/tree/enhancement/issue-%2311'
+      left-target     = '_blank'
+      left-headline   = 'experimental/issue-#11'
+
+      right-label     = 'issue'
+      right-href      = 'https://github.com/rapid-git/rapid-git/issues/11'
+      right-target    = '_blank'
+      right-headline  = '#11'
+    %}
+
+    <p>
+      We want to extend the brach deletion commands to also accept multiple indexes and even ranges.
+    </p>
+
+    <div class="flex-row">
+      <div class="flex-cell">
+        <code>rapid branch -d &#60;indexes and ranges&#62;</code>
+      </div>
+      <div class="flex-cell">
+        delete one or multiple branches
+      </div>
+    </div>
+    <div class="flex-row">
+      <div class="flex-cell">
+        <code>rapid branch -D &#60;indexes and ranges&#62;</code>
+      </div>
+      <div class="flex-cell">
+        force delete one or multiple branches
+      </div>
+    </div>
+  {% endcapture %}
+
+  {% include grouping.html
+    label   = 'experimental'
+    content = branch_experimental
+  %}
+
+  <h3>Command prompt example</h3>
+
+  {% capture command_rapid-branch %}
+    {% include commands/command.html
+      branch  = 'master'
+      command = 'rapid branch'
+    %}
+  {% endcapture %}
+
+  {% capture command_rapid-branch_output %}
+    {% include commands/output_rapid-branch.html
+      branches = site.data._rapid-branch.branches
+    %}
+  {% endcapture %}
+
+  {% capture command_rapid-branch_delete %}
+    {% include commands/command.html
+      branch  = 'master'
+      command = 'rapid branch -d 4'
+    %}
+  {% endcapture %}
+
+  {% capture command_rapid-branch_delete_output %}
+    <span>Deleted branch feature/music-player (was a8d46a0)</span>
+    <br />
+    <br />
+  {% endcapture %}
+
+  {% capture command_rapid-branch_delete_after_output %}
+    {% include commands/output_rapid-branch.html
+      branches = site.data._rapid-branch.branches-after-delete
+    %}
+  {% endcapture %}
+
+  {% capture command_empty_on-master %}
+    {% include commands/command.html
+      branch  = 'master'
+      command = '&#9611;'
+    %}
+  {% endcapture %}
+
+  {% include console.html
+    command-1 = command_rapid-branch
+    command-2 = command_rapid-branch_output
+    command-3 = command_rapid-branch_delete
+    command-4 = command_rapid-branch_delete_output
+    command-5 = command_rapid-branch
+    command-6 = command_rapid-branch_delete_after_output
+    command-7 = command_empty_on-master
+  %}
 {% endcapture %}
 
-{% include console.html
-  command-1 = command_rapid-branch
-  command-2 = command_rapid-branch_output
-  command-3 = command_empty
+{% capture section_rapid-checkout %}
+  <p>
+    <code class="highlighter-rouge">rapid checkout &#60;index&#62;</code> allows you to checkout a branch by using an index instead of a branch name. The index is based on <code class="highlighter-rouge">git branch</code> and <code class="highlighter-rouge">rapid branch</code>.
+  </p>
+
+  <h3>Command prompt example</h3>
+
+  {% capture command_rapid-checkout %}
+    {% include commands/command.html
+      branch  = 'master'
+      command = 'rapid checkout 3'
+    %}
+  {% endcapture %}
+
+  {% capture command_rapid-checkout_output %}
+    <span>Switched to branch 'feature/video-player'</span>
+    <br />
+    <br />
+  {% endcapture %}
+
+  {% capture command_empty_on-feature-video-player %}
+    {% include commands/command.html
+      branch  = 'feature/video-player'
+      command = '&#9611;'
+    %}
+  {% endcapture %}
+
+  {% include console.html
+    command-1 = command_rapid-checkout
+    command-2 = command_rapid-checkout_output
+    command-3 = command_empty_on-feature-video-player
+  %}
+{% endcapture %}
+
+{% capture section_rapid-merge %}
+  <p>
+    Use <code class="highlighter-rouge">rapid merge &#60;index&#62;</code> to incorporate changes from another branch into your current one by referencing the other branch via index. The index is based on <code class="highlighter-rouge">git branch</code> and <code class="highlighter-rouge">rapid branch</code>.
+  </p>
+
+  <h3>Command prompt example</h3>
+
+  {% capture command_rapid-merge %}
+    {% include commands/command.html
+      branch  = 'master'
+      command = 'rapid merge 3'
+    %}
+  {% endcapture %}
+
+  {% capture command_rapid-merge_output %}
+    <span>Updating a8d46a0..25310b3</span>
+    <br />
+    <span>Fast-forward</span>
+    <br />
+    <span> gallery      | 37</span>
+    <span class="bold green">+++++++++++++++++++++++++++++</span><span class="bold red">--------</span>
+    <br />
+    <span> video-player | 73</span>
+    <span class="bold green">+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span>
+    <br />
+    <span> 2 files changed, 102 insertions(+), 8 deletions(-)</span>
+    <br />
+    <span> create mode 100644 video-player</span>
+    <br />
+    <br />
+  {% endcapture %}
+
+  {% include console.html
+    command-1 = command_rapid-merge
+    command-2 = command_rapid-merge_output
+    command-3 = command_empty_on-master
+  %}
+{% endcapture %}
+
+{% capture section_rapid-rebase %}
+  <p>
+    Utilize <code class="highlighter-rouge">rapid rebase &#60;index&#62;</code> to reapply the commits of your current branch on top of another branch by referencing the other branch via index. The index is based on <code class="highlighter-rouge">git branch</code> and <code class="highlighter-rouge">rapid branch</code>.
+  </p>
+
+  <h3>Available notations</h3>
+  <div class="flex-row">
+    <div class="flex-cell">
+      <code>rapid rebase &#60;index&#62;</code>
+    </div>
+    <div class="flex-cell">
+      rebase your current branch on top of another branch
+    </div>
+  </div>
+  <div class="flex-row">
+    <div class="flex-cell">
+      <code>rapid rebase -c</code>
+    </div>
+    <div class="flex-cell">
+      continue rebasing
+    </div>
+  </div>
+  <div class="flex-row">
+    <div class="flex-cell">
+      <code>rapid rebase -a</code>
+    </div>
+    <div class="flex-cell">
+      abort rebasing
+    </div>
+  </div>
+
+  <h3>Command prompt example</h3>
+
+  {% capture command_rapid-rebase %}
+    {% include commands/command.html
+      branch  = 'feature/video-player'
+      command = 'rapid rebase 4'
+    %}
+  {% endcapture %}
+
+  {% capture command_rapid-rebase_output %}
+    <span>First, rewinding head to replay your work on top of it...</span>
+    <br />
+    <span>Fast-forwarded feature/video-player to master</span>
+    <br />
+    <br />
+  {% endcapture %}
+
+  {% include console.html
+    command-1 = command_rapid-rebase
+    command-2 = command_rapid-rebase_output
+    command-3 = command_empty_on-feature-video-player
+  %}
+{% endcapture %}
+
+{% capture section_rapid-push %}
+  <p>
+    <code class="highlighter-rouge">rapid push &#60;index&#62;</code> is still experimental. You can not use it with the source code of the master branch. Use this command to either push a local branch or to delete a remote branch by referencing the targeted branch via index. The index is based on <code class="highlighter-rouge">git branch</code> and <code class="highlighter-rouge">rapid branch</code>.
+  </p>
+
+  <h3>Available notations</h3>
+
+  <div class="flex-row">
+    <div class="flex-cell">
+      <code>rapid push &#60;index&#62;</code>
+    </div>
+    <div class="flex-cell">
+      push one branch to a remote repository
+    </div>
+  </div>
+  <div class="flex-row">
+    <div class="flex-cell">
+      <code>rapid push [git-push-options...] &#60;index&#62;</code>
+    </div>
+    <div class="flex-cell">
+      push with <code>git push</code> options, e.g. <code>--delete</code> to delete a remote branch
+    </div>
+  </div>
+
+  <h3>Command prompt example</h3>
+
+  {% capture command_rapid-push %}
+    {% include commands/command.html
+      branch  = 'feature/video-player'
+      command = 'rapid push 4'
+    %}
+  {% endcapture %}
+
+  {% capture command_rapid-push_output %}
+    <span>Counting objects: 45, done.</span>
+    <br />
+    <span>Delta compression using up to 4 threads.</span>
+    <br />
+    <span>Compressing objects: 100% (33/33), done.</span>
+    <br />
+    <span>Writing objects: 100% (45/45), 3.98 KiB | 0 bytes/s, done.</span>
+    <br />
+    <span>Total 45 (delta 14), reused 0 (delta 0 )</span>
+    <br />
+    <span>To https://github.com/rapid-git/rapid-git.git</span>
+    <br />
+    <span> * [new branch]      feature/video-player -> feature/video-player</span>
+    <br />
+    <br />
+  {% endcapture %}
+
+  {% include console.html
+    command-1 = command_rapid-push
+    command-2 = command_rapid-push_output
+    command-3 = command_empty_on-feature-video-player
+  %}
+{% endcapture %}
+
+{% include box.html
+  type          = 'opening rhomboid'
+  content       = overview
+%}
+{% include box.html
+  type          = 'rhomboid'
+  headline-type = 'elegant'
+  headline-id   = 'rapid-branch'
+  headline      = 'rapid branch'
+  content       = section_rapid-branch
+%}
+{% include box.html
+  type          = 'rhomboid'
+  headline-type = 'elegant'
+  headline-id   = 'rapid-checkout'
+  headline      = 'rapid checkout'
+  content       = section_rapid-checkout
+%}
+{% include box.html
+  type          = 'rhomboid'
+  headline-type = 'elegant'
+  headline-id   = 'rapid-merge'
+  headline      = 'rapid merge'
+  content       = section_rapid-merge
+%}
+{% include box.html
+  type          = 'rhomboid'
+  headline-type = 'elegant'
+  headline-id   = 'rapid-rebase'
+  headline      = 'rapid rebase'
+  content       = section_rapid-rebase
+%}
+{% include box.html
+  state           = 'experimental'
+  type            = 'closing rhomboid'
+
+  headline-type   = 'elegant'
+  headline-id     = 'rapid-push'
+  headline        = 'rapid push'
+
+  left-label      = 'branch'
+  left-href       = 'https://github.com/rapid-git/rapid-git/tree/enhancement/issue-%2312'
+  left-target     = '_blank'
+  left-headline   = 'experimental/issue-#12'
+
+  right-label     = 'issue'
+  right-href      = 'https://github.com/rapid-git/rapid-git/issues/12'
+  right-target    = '_blank'
+  right-headline  = '#12'
+
+  content         = section_rapid-push
 %}
