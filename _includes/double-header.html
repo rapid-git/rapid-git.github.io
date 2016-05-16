@@ -1,0 +1,30 @@
+{% if include.left-label %}
+  {% assign left-label = include.left-label | append: ': ' %}
+{% endif %}
+{% if include.left-href %}
+  {% assign left-href-attribute = include.left-href | prepend: ' href="' | append: '"' %}
+{% endif %}
+{% if include.left-target %}
+  {% assign left-target-attribute = include.left-target | prepend: ' target="' | append: '"' %}
+{% endif %}
+
+{% if include.right-label %}
+  {% assign right-label = include.right-label | append: ': ' %}
+{% endif %}
+{% if include.right-href %}
+  {% assign right-href-attribute = include.right-href | prepend: ' href="' | append: '"' %}
+{% endif %}
+{% if include.right-target %}
+  {% assign right-target-attribute = include.right-target | prepend: ' target="' | append: '"' %}
+{% endif %}
+
+<div class="double-header">
+  <div class="left">
+    {{ left-label }}
+    <a{{ left-href-attribute }}{{ left-target-attribute }}>{{ include.left-headline }}</a>
+  </div>
+  <div class="right">
+    {{ right-label }}
+    <a{{ right-href-attribute }}{{ left-target-attribute }}>{{ include.right-headline }}</a>
+  </div>
+</div>
