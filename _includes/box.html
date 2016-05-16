@@ -1,3 +1,6 @@
+{% if include.state %}
+  {% assign state = include.state | append: ' ' %}
+{% endif %}
 {% assign type = include.type | default: 'rhomboid' | append: ' ' %}
 {% assign headline-type = include.headline-type | default: 'elegant' | append: ' ' %}
 
@@ -5,11 +8,11 @@
   {% assign headline-id = include.headline-id | prepend: 'id="' | append: '" ' %}
 {% endif %}
 
-<div class="{{ type }}box">
+<div class="{{ state }}{{ type }}box">
   <svg
     preserveAspectRatio="none"
     class="background" >
-    
+
     {% if type == 'rhomboid ' or type == 'closing rhomboid ' %}
       <svg
         viewBox="0 0 500 70"
@@ -74,6 +77,20 @@
     <h2 {{ headline-id }}class="{{ headline-type }}headline">
       {{ include.headline }}
     </h2>
+  {% endif %}
+
+  {% if include.state == 'experimental' %}
+    {% include double-header.html
+      left-label      = include.left-label
+      left-href       = include.left-href
+      left-target     = include.left-target
+      left-headline   = include.left-headline
+
+      right-label     = include.right-label
+      right-href      = include.right-href
+      right-target    = include.right-target
+      right-headline  = include.right-headline
+    %}
   {% endif %}
 
   <div class="content">
