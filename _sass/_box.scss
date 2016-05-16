@@ -46,7 +46,7 @@
   }
 
   > .content {
-    padding: 20px;
+    padding: 22px 20px;
 
     :last-child {
       margin-bottom: 0;
@@ -54,7 +54,52 @@
   }
 }
 
+.box.experimental {
+
+  > .elegant.headline {
+    border-bottom-style: dashed;
+  }
+
+  > .double-header {
+    position: relative;
+    display: flex;
+    flex-flow: row;
+    margin-bottom: 22px;
+    width: 100%;
+
+    > .left,
+    > .right {
+      flex: 1 1 auto;
+      color: #b1afaf;
+    }
+
+    > .left {
+      padding: 11px 10px 11px 20px;
+    }
+
+    > .right {
+      padding: 11px 20px 11px 10px;
+      text-align: right;
+    }
+  }
+
+  > .content > h3 {
+    border-bottom-style: dashed;
+  }
+}
+
 .box > .content {
+
+  > h3 {
+    position: relative;
+    box-sizing: border-box;
+    left: -20px;
+    margin: $spacing-unit / 2 calc(50% - 20px) 22px 0;
+    border-bottom: 1px solid $left-color-1;
+    padding: 17px 20px;
+    color: $left-color-1;
+    font-size: 20px;
+  }
 
   > .panel {
 
