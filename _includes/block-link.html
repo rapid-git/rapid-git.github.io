@@ -13,19 +13,19 @@
     {% if orientation == 'left' %}
       <path
         class="underline"
-        d="M 50,0 L 100,50 L 500,50 L 500,49 L 100,49 L 51,0 Z" />
+        d="m 50,0 50,50 400,0 0,-1 -400,0 -49,-49 z" />
       <path
         class="fill"
-        d="M 500,50 L 100,50 L 50,0 L 70,0 L 117,46 L 500,46 Z" />
+        d="m 500,50 -400,0 -50,-50 20,0 47,46 383,0 z" />
     {% endif %}
 
     {% if orientation == 'right' %}
       <path
         class="underline"
-        d="M 450,0 L 400,50 L 0,50 L 0,49 L 400,49 L 449,0 Z" />
+        d="m 450,0 -50,50 -400,0 0,-1 400,0 49,-49 z" />
       <path
         class="fill"
-        d="M 0,50 L 400,50 L 450,0 L 430,0 L 383,46 L 0,46 Z" />
+        d="m 0,50 400,0 50,-50 -20,0 -47,46 -383,0 z" />
     {% endif %}
   </svg>
   <a href="{{ include.href }}">{{ include.text }}</a>
