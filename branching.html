@@ -65,60 +65,20 @@ permalink: /branching
   </div>
   <div class="flex-row">
     <div class="flex-cell">
-      <code>rapid branch -d &#60;index&#62;</code>
+      <code>rapid branch -d &#60;indexes and ranges&#62;</code>
     </div>
     <div class="flex-cell">
-      delete a branch
+      delete one or multiple branches
     </div>
   </div>
   <div class="flex-row">
     <div class="flex-cell">
-      <code>rapid branch -D &#60;index&#62;</code>
+      <code>rapid branch -D &#60;indexes and ranges&#62;</code>
     </div>
     <div class="flex-cell">
-      force delete a branch
+      force delete one or multiple branches
     </div>
   </div>
-
-  {% capture branch_experimental %}
-    {% include double-header.html
-      left-label      = 'branch'
-      left-href       = 'https://github.com/rapid-git/rapid-git/tree/enhancement/issue-%2311'
-      left-target     = '_blank'
-      left-headline   = 'experimental/issue-#11'
-
-      right-label     = 'issue'
-      right-href      = 'https://github.com/rapid-git/rapid-git/issues/11'
-      right-target    = '_blank'
-      right-headline  = '#11'
-    %}
-
-    <p>
-      We want to extend the brach deletion commands to also accept multiple indexes and even ranges.
-    </p>
-
-    <div class="flex-row">
-      <div class="flex-cell">
-        <code>rapid branch -d &#60;indexes and ranges&#62;</code>
-      </div>
-      <div class="flex-cell">
-        delete one or multiple branches
-      </div>
-    </div>
-    <div class="flex-row">
-      <div class="flex-cell">
-        <code>rapid branch -D &#60;indexes and ranges&#62;</code>
-      </div>
-      <div class="flex-cell">
-        force delete one or multiple branches
-      </div>
-    </div>
-  {% endcapture %}
-
-  {% include grouping.html
-    label   = 'experimental'
-    content = branch_experimental
-  %}
 
   <h3>Command prompt example</h3>
 
@@ -391,22 +351,9 @@ permalink: /branching
   content       = section_rapid-rebase
 %}
 {% include box.html
-  state           = 'experimental'
   type            = 'closing rhomboid'
-
   headline-type   = 'elegant'
   headline-id     = 'rapid-push'
   headline        = 'rapid push'
-
-  left-label      = 'branch'
-  left-href       = 'https://github.com/rapid-git/rapid-git/tree/enhancement/issue-%2312'
-  left-target     = '_blank'
-  left-headline   = 'experimental/issue-#12'
-
-  right-label     = 'issue'
-  right-href      = 'https://github.com/rapid-git/rapid-git/issues/12'
-  right-target    = '_blank'
-  right-headline  = '#12'
-
   content         = section_rapid-push
 %}
