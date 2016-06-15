@@ -1,5 +1,9 @@
 {% if include.item-1 %}
-  <ul class="{{ include.type }}">
+  {% if include.type %}
+    {% assign type-class = ' class="' | append: include.type | append: '"' %}
+  {% endif %}
+
+  <ul{{ type-class }}>
     <li>
       {{ include.item-1 }}
     </li>
