@@ -76,6 +76,11 @@ permalink: /get-started
     <code class="subtle panel">
       source path/to/rapid-git.sh
     </code>
+    {% include panel.html
+      type    = 'info'
+      title   = 'Note for Windows users:'
+      content = 'There is a certain trick for Windows users, who wish to create files such as <em>.bashrc</em> via the Windows Explorer. When typing the file name, do it as follows without defining a file extension: <code>.bashrc.</code>'
+    %}
   {% endcapture %}
 
   {% capture installation_step-3 %}
@@ -95,11 +100,6 @@ permalink: /get-started
     item-1 = installation_step-1
     item-2 = installation_step-2
     item-3 = installation_step-3
-  %}
-  {% include panel.html
-    type    = 'info'
-    title   = 'Note for Windows users:'
-    content = 'There is a certain trick for Windows users, who wish to create files such as <em>.bashrc</em> via the Windows Explorer. When typing the file name, do it as follows without defining a file extension: <code>.bashrc.</code>'
   %}
 {% endcapture %}
 
