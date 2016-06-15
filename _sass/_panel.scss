@@ -4,7 +4,7 @@ $panel-warning-color: rgb(208, 187, 48);
 /**
  * Panels
  */
-.panel {
+div.panel {
   margin-bottom: $spacing-unit / 2;
   padding: $spacing-unit / 2;
 
@@ -75,5 +75,53 @@ $panel-warning-color: rgb(208, 187, 48);
     &::after {
       content: '!';
     }
+  }
+}
+
+code.panel {
+  position: relative;
+  display: block;
+  margin: 0 0 15px;
+  border: 1px solid #eef;
+  border-radius: 0;
+  padding: 15px 65px 15px 15px;
+  background-color: #eef;
+
+  &.subtle {
+    padding-right: 66px;
+    background-color: transparent;
+
+    &::before {
+      border-left: 1px solid #eef;
+    }
+
+    &::after {
+      content: ">>";
+    }
+  }
+
+  &::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 100%;
+    background-color: white;
+    content: "";
+  }
+
+  &::after {
+    position: absolute;
+    display: block;
+    top: calc(50% - 15px);
+    right: 6px;
+    width: 40px;
+    height: 30px;
+    background-color: transparent;
+    color: #eef;
+    font-size: 20px;
+    line-height: 30px;
+    text-align: center;
+    content: "$_"
   }
 }
