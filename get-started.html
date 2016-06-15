@@ -1,0 +1,115 @@
+---
+layout: documentation
+title: Get Started
+permalink: /get-started
+---
+
+{% capture section_introduction %}
+  <p>
+    rapid-git provides shortcuts for often-used git commands which aim to make your daily git use more efficient by typing less.
+  </p>
+  <p>
+    rapid-git enables you to interact with files and branches using numbers (called indexes). Indexes represent the files that <code>git status</code> or branches that <code>git branch</code> prints on the screen. When interacting with files you may define ranges using the <a href="/fundamentals">numbers and dots notation</a>.
+  </p>
+  <p>
+    The concept behind rapid-git was introduced by <a href="https://github.com/agross">Alexander Groß</a> in his repository <a href="https://github.com/agross/git_shizzle">git_shizzle</a>. In contrast to this repository, which uses shell, he implemented his project using Ruby. If you are interested, please have a look at his project too.
+  </p>
+{% endcapture %}
+
+{% capture section_prerequisites-and-installation %}
+  <p>
+    There are a few prerequisites worth mentioning:
+  </p>
+
+  {% capture prerequisites_1 %}
+    <p>
+      If you use <strong>bash</strong>, then your bash version needs to be at least v4.0.0. Use the following command to verify it:
+    </p>
+    <code class="panel">
+      bash --version
+    </code>
+  {% endcapture %}
+
+  {% capture prerequisites_2 %}
+    <p>
+      If you use <strong>zsh</strong>, then be aware, that we tested the script with v5.0.2 and v5.1.1. Check yours using this command:
+    </p>
+    <code class="panel">
+      zsh --version
+    </code>
+  {% endcapture %}
+
+  {% capture prerequisites_3 %}
+    <p>
+      If you use <strong>Mac</strong>, make sure, that you have <strong>gnu-sed</strong> installed. The easiest way is to use <a href="http://brew.sh/">homebrew</a> to install it:
+    </p>
+    <code class="panel">
+      brew install gnu-sed --with-default-names
+    </code>
+    <p>
+      For more extensive instructions on how to install GNU commmand line tools on <strong>Mac</strong>, please refer to this <a href="https://www.topbug.net/blog/2013/04/14/install-and-use-gnu-command-line-tools-in-mac-os-x/">blog post</a>.
+    </p>
+  {% endcapture %}
+
+  {% include list.html
+    type   = 'square steps'
+    item-1 = prerequisites_1
+    item-2 = prerequisites_2
+    item-3 = prerequisites_3
+  %}
+  <p>
+    Let's install rapid-git:
+  </p>
+  {% capture installation_step-1 %}
+    <p>
+      Start with cloning this repository:
+    </p>
+    <code class="panel">
+      git clone https://github.com/rapid-git/rapid-git.git
+    </code>
+  {% endcapture %}
+
+  {% capture installation_step-2 %}
+    <p>
+      Add <em>rapid-git.sh</em> to <em>.bashrc</em> or <em>.zshrc</em>:
+    </p>
+    <code class="subtle panel">
+      source path/to/rapid-git.sh
+    </code>
+  {% endcapture %}
+
+  {% capture installation_step-3 %}
+    <p>
+      At this point rapid-git should already work, but you may also add
+    </p>
+    <code class="subtle panel">
+      source path/to/alias.rapid-git.sh
+    </code>
+    <p>
+      to get some default aliases.
+    </p>
+  {% endcapture %}
+
+  {% include ordered-list.html
+    type   = 'steps'
+    item-1 = installation_step-1
+    item-2 = installation_step-2
+    item-3 = installation_step-3
+  %}
+  {% include panel.html
+    type    = 'info'
+    title   = 'Note for Windows users:'
+    content = 'There is a certain trick for Windows users, who wish to create files such as <em>.bashrc</em> via the Windows Explorer. When typing the file name, do it as follows without defining a file extension: <code>.bashrc.</code>'
+  %}
+{% endcapture %}
+
+{% include box.html
+  type            = 'opening rhomboid'
+  content         = section_introduction
+%}
+{% include box.html
+  type            = 'closing rhomboid'
+  headline-type   = 'elegant'
+  headline        = 'Prerequisites and installation'
+  content         = section_prerequisites-and-installation
+%}
