@@ -1,5 +1,5 @@
-::-moz-selection { background: $middle-color; color: #fff; text-shadow: none; }
-::selection { background: $middle-color; color: #fff; text-shadow: none; }
+::-moz-selection { background: $pomegranate; color: white; text-shadow: none; }
+::selection { background: $pomegranate; color: white; text-shadow: none; }
 
 .documentation-header {
   margin-bottom: $spacing-unit;
@@ -11,7 +11,7 @@
 
   .inset-text {
     font-weight: bolder;
-    color: rgba(245,245,245, 0.8);
+    color: rgba($wild-sand, 0.8);
     text-shadow: 1px 2px 4px $background-color,
                  0 0 0 black;
   }

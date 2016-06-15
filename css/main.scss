@@ -3,15 +3,34 @@
 ---
 @charset "utf-8";
 
-
+// color names are based on http://chir.ag/projects/name-that-color/
 // My colors
-$left-color-2:    #C2620B;
-$left-color-1:    #8F6E50;
-$middle-color:    #F54D27;
-$right-color-1:   #65F699;
-$right-color-2:   #0BC219;
-$grey:            #F5F5F5;
-
+$pumpkin-skin:    #C2620B;
+$leather:         #8F6E50;
+$pomegranate:     #F54D27;
+$screamin-green:  #65F699;
+$malachite:       #0BC219;
+$wild-sand:       #F5F5F5;
+$linen:           #FEF9F9;
+$cod-grey:        #111111;
+$grey:            #828282;
+$tia-maria:       #C62C09;
+$boston-blue:     #3C7EB6;
+$old-gold:        #D0BB30;
+$titan-white:     #EEEEFF;
+$silver-chalice:  #B1AFAF;
+$ebb:             #E9E5E5;
+$persian-red:     #C13B2E;
+$apple:           #3CBD2B;
+$la-rioja:        #C6C30F;
+$eastern-blue:    #29A8B5;
+$brink-pink:      #FB6C7D;
+$golden-fizz:     #EFFF3B;
+$cyan-aqua:       #3BF9FF;
+$lavender-rose:   #FC9EF0;
+$tundora:         #4B4B4B;
+$mercury:         #E8E8E8;
+$alto:            #dedddd;
 
 // Our variables
 $base-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -22,8 +41,8 @@ $base-line-height: 1.5;
 
 $spacing-unit:     30px;
 
-$text-color:       #111;
-$background-color: #fef9f9;
+$text-color:       $cod-grey;
+$background-color: $linen;
 $brand-color:      #2a7ae2;
 
 $grey-color:       #828282;

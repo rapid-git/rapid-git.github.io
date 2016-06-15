@@ -1,6 +1,3 @@
-$panel-info-color: rgb(60,126,182);
-$panel-warning-color: rgb(208, 187, 48);
-
 /**
  * Panels
  */
@@ -52,11 +49,11 @@ div.panel {
   }
 
   &.info {
-    box-shadow:  0 0 2px rgba($panel-info-color,.36),
-                 0 2px 4px rgba($panel-info-color,.48);
+    box-shadow:  0 0 2px rgba($boston-blue,.36),
+                 0 2px 4px rgba($boston-blue,.48);
 
     &::before {
-      background-color: rgba($panel-info-color,.24);
+      background-color: rgba($boston-blue,.24);
     }
 
     &::after {
@@ -65,11 +62,11 @@ div.panel {
   }
 
   &.warning {
-    box-shadow:  0 0 2px rgba($panel-warning-color,.36),
-                 0 2px 4px rgba($panel-warning-color,.48);
+    box-shadow:  0 0 2px rgba($old-gold,.36),
+                 0 2px 4px rgba($old-gold,.48);
 
     &::before {
-      background-color: rgba($panel-warning-color,.24);
+      background-color: rgba($old-gold,.24);
     }
 
     &::after {
@@ -82,17 +79,17 @@ code.panel {
   position: relative;
   display: block;
   margin: 0 0 15px;
-  border: 1px solid #eef;
+  border: 1px solid $titan-white;
   border-radius: 0;
   padding: 15px 65px 15px 15px;
-  background-color: #eef;
+  background-color: $titan-white;
 
   &.subtle {
     padding-right: 66px;
     background-color: transparent;
 
     &::before {
-      border-left: 1px solid #eef;
+      border-left: 1px solid $titan-white;
     }
 
     &::after {

@@ -24,7 +24,7 @@
     }
 
     > .flashy {
-      fill: $left-color-1;
+      fill: $leather;
     }
   }
 
@@ -35,9 +35,9 @@
     line-height: 36px;
 
     &.elegant {
-      border-bottom: 1px solid $left-color-1;
+      border-bottom: 1px solid $leather;
       padding-bottom: 16px;
-      color: $left-color-1;
+      color: $leather;
     }
 
     &.flashy {
@@ -70,7 +70,7 @@
     > .left,
     > .right {
       flex: 1 1 auto;
-      color: #b1afaf;
+      color: $silver-chalice;
     }
 
     > .left {
@@ -95,16 +95,13 @@
     box-sizing: border-box;
     left: -20px;
     margin: $spacing-unit / 2 calc(50% - 20px) 22px 0;
-    border-bottom: 1px solid $left-color-1;
+    border-bottom: 1px solid $leather;
     padding: 17px 20px;
-    color: $left-color-1;
+    color: $leather;
     font-size: 20px;
   }
 
   div.panel {
-
-    $panel-info-color: rgb(60,126,182);
-    $panel-warning-color: rgb(208, 187, 48);
 
     &.info,
     &.warning {
@@ -113,11 +110,11 @@
     }
 
     &.info {
-      border-color: rgba($panel-info-color,.24);
+      border-color: rgba($boston-blue,.24);
     }
 
     &.warning {
-      border-color: rgba($panel-warning-color,.24);
+      border-color: rgba($old-gold,.24);
     }
   }
 }

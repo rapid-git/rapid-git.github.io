@@ -36,14 +36,14 @@
   &:hover {
 
     > .background > .fill {
-        fill: $left-color-1;
+        fill: $leather;
         filter: url(#drop-shadow);
     }
 
     > a {
       font-weight: bold;
-      text-shadow: 0 0 1px rgba(0,0,0,.12),
-                   0 1px 2px rgba(0,0,0,.24);
+      text-shadow: 0 0 1px rgba(black,.12),
+                   0 1px 2px rgba(black,.24);
     }
   }
 
@@ -58,7 +58,7 @@
     height: 100%;
 
     > .underline {
-      fill: $left-color-1;
+      fill: $leather;
     }
 
     > .fill {
@@ -68,7 +68,7 @@
 
   > a {
     display: block;
-    color: $left-color-1;
+    color: $leather;
     font-size: 24px;
     line-height: 36px;
     text-decoration: none;
