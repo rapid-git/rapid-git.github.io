@@ -1,0 +1,19 @@
+.title-page {
+
+  > .svg-filters {
+    position: absolute;
+  }
+
+  > .page-content {
+   padding: $spacing-unit;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .title-page {
+
+    > .page-content {
+     padding: $spacing-unit * 3 $spacing-unit * 2;
+    }
+  }
+}
