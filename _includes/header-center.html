@@ -1,0 +1,50 @@
+{% capture header %}
+<div class="header-center">
+  <nav>
+    {% for my_page in site.pages %}
+      {% if my_page.title == 'Get Started' %}
+        {% assign url = my_page.url | prepend: site.baseurl %}
+        <a href="{{ url }}">{{ my_page.title }}</a>
+      {% endif %}
+    {% endfor %}
+    {% for my_page in site.pages %}
+      {% if my_page.title == 'Fundamentals' %}
+        {% assign url = my_page.url | prepend: site.baseurl %}
+        <a href="{{ url }}">{{ my_page.title }}</a>
+      {% endif %}
+    {% endfor %}
+    {% for my_page in site.pages %}
+      {% if my_page.title == 'Commiting' %}
+        {% assign url = my_page.url | prepend: site.baseurl %}
+        <a href="{{ url }}">{{ my_page.title }}</a>
+      {% endif %}
+    {% endfor %}
+    {% for my_page in site.pages %}
+      {% if my_page.title == 'Branching' %}
+        {% assign url = my_page.url | prepend: site.baseurl %}
+        <a href="{{ url }}">{{ my_page.title }}</a>
+      {% endif %}
+    {% endfor %}
+  </nav>
+  <div class="branding">
+    <img src="/assets/logo_128x128.svg" alt="logo">
+    <p>
+      rapid-git
+    </p>
+  </div>
+  <div class="tag">
+    <p>
+      be more efficient
+    </p>
+    <p>
+      by typing less
+    </p>
+  </div>
+</div>
+
+{% endcapture %}
+
+{% include box.html
+  type          = 'opening rhomboid'
+  content       = header
+%}
