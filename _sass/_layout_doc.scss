@@ -1,6 +1,13 @@
 ::-moz-selection { background: $pomegranate; color: white; text-shadow: none; }
 ::selection { background: $pomegranate; color: white; text-shadow: none; }
 
+.documentation-page {
+
+  > .svg-filters {
+    position: absolute;
+  }
+}
+
 .documentation-header {
   margin-bottom: $spacing-unit;
 
