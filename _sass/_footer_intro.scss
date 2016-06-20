@@ -1,0 +1,40 @@
+footer.intro {
+  border-top: 1px solid $mercury;
+  padding: $spacing-unit $spacing-unit $spacing-unit / 2;
+  background-color: white;
+
+  > .links {
+    text-align: right;
+
+    > a {
+
+      &:visited > svg > path {
+        fill: $tia-maria;
+      }
+
+      &:hover,
+      &:visited:hover {
+
+        > svg > path {
+          fill: $cod-grey;
+        }
+      }
+
+      > svg {
+        vertical-align: baseline;
+        width: 16px;
+        height: 16px;
+
+        > path {
+          fill: $pomegranate;
+        }
+      }
+    }
+  }
+
+  > .license {
+    margin-bottom: 0;
+    font-size: 12px;
+    text-align: right;
+  }
+}
