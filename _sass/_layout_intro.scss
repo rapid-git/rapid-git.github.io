@@ -5,7 +5,8 @@
   }
 
   > .page-content {
-   padding: $spacing-unit;
+    padding: $spacing-unit;
+    min-height: calc(100vh - 88px);
   }
 }
 
